@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1 class="title"><a href="index.php"><</a> Strings</h1>
   <a id="top" href="#bottom" ><h1>Go bottom</h1></a><br>
 
 

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<h1 class="title"><a href="index.php"><</a> Numbers </h1>
 	<a id="top" href="#bottom" ><h1>Go bottom</h1></a>
 
 	You want to apply a piece of code to a range of integers.
@@ -59,9 +60,9 @@ echo "<br>";
 $number = '1234.56';
 $france = new NumberFormatter("en", NumberFormatter::SPELLOUT);
 // $formatted is "mille-deux-cent-trente-quatre virgule cinq six"
- $formatted = $france->format($number);
- echo $formatted;
- echo "<br>";
+$formatted = $france->format($number);
+echo $formatted;
+echo "<br>";
 $number = 1234.56;
 // US uses $ , and .
 // $formatted1 is $1,234.56
@@ -79,11 +80,35 @@ $number = 1234.56;
 // $formatted is €1,234.56
 $usa = new NumberFormatter("en-US", NumberFormatter::CURRENCY);
 echo $formatted = $usa->formatCurrency($number, 'EUR');
-	?>
+?>
 
-	<br>
-	<a id="topp" href="#bottom" ><h1>Go bottom</h1></a>
-	<a id="bottomm" href="#top" ><h1>Go up</h1></a>
-	<a id="bottom" href="#top"><h1>Go Up</h1></a>
+<hr> Printing Correct Plurals <br>
+<?php 
+
+function may_pluralize($singular_word, $amount_of){
+		//array of special plurals
+	$plurals = [ 'fish' => 'fish', 'person' => 'people'];
+
+		//only one
+	if(1 == $amount_of) {
+		return $singular_word;
+	}
+
+		//more than one, special plural
+	if(isset($plurals[$singular_word])){
+		return $plurals[$singular_word];
+	}
+		//more than one, standard plural: add 's' to end of word
+	return $singular_word . 's';
+}
+
+$number_of_fish = 3;
+echo $out1 = "I meet $number_of_fish " . may_pluralize('person', $number_of_fish) . '.';
+?>
+
+<br>
+<a id="topp" href="#bottom" ><h1>Go bottom</h1></a>
+<a id="bottomm" href="#top" ><h1>Go up</h1></a>
+<a id="bottom" href="#top"><h1>Go Up</h1></a>
 </body>
 </html>
